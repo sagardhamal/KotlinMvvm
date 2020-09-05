@@ -39,6 +39,7 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
                 val authResponse = viewModel?.userLogin(email, password)
                 if (authResponse?.message != null) {
                     Log.e(TAG, "loginUser: ${authResponse.message}")
+
                     //binding.rootLayout.snackbar(authResponse.message)
                     // viewModel.saveLoggedInUser(authResponse.user)
                 } else {
