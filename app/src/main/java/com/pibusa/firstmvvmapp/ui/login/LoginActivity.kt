@@ -16,9 +16,8 @@ import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
 
 class LoginActivity : AppCompatActivity(), KodeinAware {
-    override val kodein = Kodein.lazy {
-        /* bindings */
-    }
+
+    override val kodein by kodein()
     private val factory: AuthViewModelFactory by instance()
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
@@ -27,7 +26,7 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        viewModel = ViewModelProvider(this,factory).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
 
         binding.buttonSignIn.setOnClickListener {

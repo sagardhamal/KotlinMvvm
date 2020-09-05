@@ -2,7 +2,8 @@ package com.pibusa.firstmvvmapp.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.pibusa.firstmvvmapp.data.data.UserRepositry
+import com.pibusa.firstmvvmapp.data.repositry.UserRepositry
+
 @Suppress("UNCHECKED_CAST")
 class AuthViewModelFactory (
     private val repository: UserRepositry

@@ -1,4 +1,4 @@
-package com.pibusa.firstmvvmapp.data.data
+package com.pibusa.firstmvvmapp.data.repositry
 
 import com.pibusa.firstmvvmapp.data.network.MyApi
 import com.pibusa.firstmvvmapp.data.network.SafeApiRequest
