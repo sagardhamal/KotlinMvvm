@@ -2,7 +2,7 @@ package com.pibusa.firstmvvmapp.data.repositry
 
 import com.pibusa.firstmvvmapp.data.network.MyApi
 import com.pibusa.firstmvvmapp.data.network.SafeApiRequest
-import net.simplifiedcoding.mvvmsampleapp.data.network.responses.AuthResponse
+import com.pibusa.firstmvvmapp.data.network.responses.AuthResponse
 
 class UserRepositry(private val api: MyApi) : SafeApiRequest() {
 

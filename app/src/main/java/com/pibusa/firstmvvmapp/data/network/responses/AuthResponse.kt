@@ -1,4 +1,4 @@
-package net.simplifiedcoding.mvvmsampleapp.data.network.responses
+package com.pibusa.firstmvvmapp.data.network.responses
 
 
 

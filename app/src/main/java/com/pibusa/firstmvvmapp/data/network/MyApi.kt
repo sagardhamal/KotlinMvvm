@@ -1,13 +1,12 @@
 package com.pibusa.firstmvvmapp.data.network
 
-import net.simplifiedcoding.mvvmsampleapp.data.network.responses.AuthResponse
+import com.pibusa.firstmvvmapp.data.network.responses.AuthResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface MyApi {
