@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.pibusa.firstmvvmapp.R
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
@@ -20,6 +21,7 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
 
         viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
