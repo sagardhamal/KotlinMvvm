@@ -3,6 +3,7 @@ package com.pibusa.firstmvvmapp
 import android.app.Application
 import com.pibusa.firstmvvmapp.data.network.MyApi
 import com.pibusa.firstmvvmapp.data.network.NetworkConnectionInterceptor
+import com.pibusa.firstmvvmapp.data.repositry.UserRepositry
 import com.pibusa.firstmvvmapp.ui.login.AuthViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -19,6 +20,7 @@ class MVVMApplication : Application(), KodeinAware {
 
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { MyApi(instance()) }
+        bind() from singleton { UserRepositry(instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
 
 

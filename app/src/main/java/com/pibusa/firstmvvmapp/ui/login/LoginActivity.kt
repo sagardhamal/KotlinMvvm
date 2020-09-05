@@ -1,55 +1,50 @@
 package com.pibusa.firstmvvmapp.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.pibusa.firstmvvmapp.R
-import com.pibusa.firstmvvmapp.databinding.ActivityLoginBinding
+import androidx.lifecycle.lifecycleScope
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
-import com.pibusa.firstmvvmapp.utils.snackbar
-import java.lang.Exception
-import androidx.lifecycle.*
-import kotlinx.coroutines.launch
-import org.kodein.di.Kodein
 
 class LoginActivity : AppCompatActivity(), KodeinAware {
-    override val kodein = Kodein.lazy {
-        /* bindings */
-    }
+    private val TAG = "LoginActivity"
+    override val kodein by kodein()
     private val factory: AuthViewModelFactory by instance()
-    private lateinit var binding: ActivityLoginBinding
-    private lateinit var viewModel: LoginViewModel
+
+    private var viewModel: LoginViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        viewModel = ViewModelProvider(this,factory).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
-
-        binding.buttonSignIn.setOnClickListener {
+        button_sign_in.setOnClickListener {
             loginUser()
         }
     }
 
     private fun loginUser() {
-        val email = binding.editTextEmail.text.toString().trim()
-        val password = binding.editTextPassword.text.toString().trim()
+        val email = edit_text_email.text.toString().trim()
+        val password = edit_text_password.text.toString().trim()
 
         lifecycleScope.launch {
             try {
-                val authResponse = viewModel.userLogin(email, password)
-                if (authResponse.message != null) {
-                    binding.rootLayout.snackbar(authResponse.message!!)
+                val authResponse = viewModel?.userLogin(email, password)
+                if (authResponse?.message != null) {
+                    Log.e(TAG, "loginUser: ${authResponse.message}")
+                    //binding.rootLayout.snackbar(authResponse.message)
                     // viewModel.saveLoggedInUser(authResponse.user)
-                }/* else {
-                    binding.rootLayout.snackbar(authResponse.message!!)
-                }*/
+                } else {
+                    //binding.rootLayout.snackbar(authResponse.message!!)
+                    Log.e(TAG, "loginUser: ${authResponse?.message}")
+                }
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e(TAG, "loginUser: ", e)
             }
         }
     }
