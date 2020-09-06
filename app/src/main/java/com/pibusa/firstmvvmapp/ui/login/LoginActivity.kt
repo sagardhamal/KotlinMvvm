@@ -41,7 +41,11 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
                     Log.e(TAG, "loginUser: ${authResponse.message}")
 
                     //binding.rootLayout.snackbar(authResponse.message)
-                    // viewModel.saveLoggedInUser(authResponse.user)
+                    if(authResponse.user!=null) {
+                        viewModel?.saveLoginUser(authResponse.user)
+                    }else{
+                       // rootLayout.snackbar(authResponse.message)
+                    }
                 } else {
                     //binding.rootLayout.snackbar(authResponse.message!!)
                     Log.e(TAG, "loginUser: ${authResponse?.message}")
