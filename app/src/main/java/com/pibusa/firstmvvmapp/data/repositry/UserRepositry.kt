@@ -6,6 +6,7 @@ import com.pibusa.firstmvvmapp.data.network.MyApi
 import com.pibusa.firstmvvmapp.data.network.SafeApiRequest
 import com.pibusa.firstmvvmapp.data.network.responses.AuthResponse
 
+
 class UserRepositry(
     private val api: MyApi,
     private val database: AppDatabase
@@ -19,4 +20,6 @@ class UserRepositry(
     suspend fun saveUser(user: UserDb) = database.getUserDao().userInsert(user)
 
     fun getUser() = database.getUserDao().getUser()
+
+
 }

@@ -1,11 +1,13 @@
 package com.pibusa.firstmvvmapp.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.pibusa.firstmvvmapp.R
+import com.pibusa.firstmvvmapp.ui.login.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
@@ -26,7 +28,9 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
         viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
         button_sign_in.setOnClickListener {
-            loginUser()
+            // loginUser()
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -41,10 +45,12 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
                     Log.e(TAG, "loginUser: ${authResponse.message}")
 
                     //binding.rootLayout.snackbar(authResponse.message)
-                    if(authResponse.user!=null) {
+                    if (authResponse.user != null) {
                         viewModel?.saveLoginUser(authResponse.user)
-                    }else{
-                       // rootLayout.snackbar(authResponse.message)
+                    } else {
+//sagar
+
+                        // rootLayout.snackbar(authResponse.message)
                     }
                 } else {
                     //binding.rootLayout.snackbar(authResponse.message!!)

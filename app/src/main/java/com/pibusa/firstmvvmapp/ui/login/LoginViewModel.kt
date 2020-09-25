@@ -11,7 +11,8 @@ class LoginViewModel(private val repositry: UserRepositry) : ViewModel() {
     suspend fun userLogin(
         email: String,
         password: String
-    ) = withContext(Dispatchers.IO) { repositry.userLogin(email, password) }
+    ) = withContext(Dispatchers.IO)
+    { repositry.userLogin(email, password) }
 
     suspend fun saveLoginUser(user: UserDb) = repositry.saveUser(user)
 
